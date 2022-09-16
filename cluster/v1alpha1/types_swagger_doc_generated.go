@@ -141,10 +141,9 @@ func (WorkspaceResourceQuotaSpec) SwaggerDoc() map[string]string {
 }
 
 var map_WorkspaceSpec = map[string]string{
-	"code":          "workspace code",
-	"description":   "workspace description",
-	"users":         "workspace users",
-	"cascadeDelete": "cascade delete, if true when delete cluster will delete all resource belong this workspace, including namespace",
+	"code":        "workspace code",
+	"description": "workspace description",
+	"users":       "workspace users",
 }
 
 func (WorkspaceSpec) SwaggerDoc() map[string]string {

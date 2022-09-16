@@ -36,11 +36,15 @@ type WorkspaceRole struct {
 type WorkspaceRoleSpec struct {
 	// +optional
 	Rules []rbacv1.PolicyRule `json:"rules" yaml:"rules" protobuf:"bytes,1,rep,name=rules"`
+	//ref cluster roles, it must have label: kubeall.com/custom`
 	// +optional
 	ClusterRoleRefs []string `json:"clusterRoleRefs" yaml:"clusterRoleRefs" protobuf:"bytes,2,rep,name=clusterRoleRefs"`
 	// Description  about workspace role
 	// +kubebuilder:validation:Required
 	Description string `json:"description" yaml:"description" protobuf:"bytes,3,opt,name=description"`
+	// only ref pod's namespace role,  it must have label: kubeall.com/custom
+	// +optional
+	RoleRefs []string `json:"roleRefs" yaml:"roleRefs" protobuf:"bytes,4,rep,name=roleRefs"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -96,7 +100,7 @@ type KubeUserAPIKeyList struct {
 // +kubebuilder:printcolumn:name="Username",type=string,JSONPath=`.spec.username`
 // +kubebuilder:printcolumn:name="Email",type=string,JSONPath=`.spec.email`
 // +kubebuilder:printcolumn:name="Enable",type=boolean,JSONPath=`.status.enable`
-// +kubebuilder:printcolumn:name="LastLoginTime",type="date",JSONPath=`.status.lastLoginTime`
+// +kubebuilder:printcolumn:name="LastLoginTime",type="string",JSONPath=`.status.lastLoginTime`
 // +kubebuilder:printcolumn:name="LastRemoteIP",type=string,JSONPath=`.status.lastRemoteIP`
 // +kubebuilder:resource:scope=Cluster
 
@@ -157,7 +161,7 @@ type KubeUserList struct {
 // +kubebuilder:printcolumn:name="Enable",type=boolean,JSONPath=`.status.enable`
 // +kubebuilder:printcolumn:name="Available",type=boolean,JSONPath=`.status.available`
 // +kubebuilder:printcolumn:name="ExpiredTime",type=string,JSONPath=`.spec.expiredTime`
-// +kubebuilder:printcolumn:name="LastCheck",type="date",JSONPath=`.status.lastCheck`
+// +kubebuilder:printcolumn:name="LastCheck",type="string",JSONPath=`.status.lastCheck`
 // +kubebuilder:resource:scope=Cluster
 
 // UserKubeConfig is the Schema for the usermanages API

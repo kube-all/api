@@ -27,7 +27,7 @@ spec:
       type: boolean
     - jsonPath: .status.lastLoginTime
       name: LastLoginTime
-      type: date
+      type: string
     - jsonPath: .status.lastRemoteIP
       name: LastRemoteIP
       type: string

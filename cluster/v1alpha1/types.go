@@ -37,7 +37,7 @@ const (
 // +kubebuilder:printcolumn:name="Version",type=string,JSONPath=`.status.version.version`
 // +kubebuilder:printcolumn:name="Category",type=string,JSONPath=`.spec.category`
 // +kubebuilder:printcolumn:name="Namespaces",type=string,JSONPath=`.status.namespaceNumber`
-// +kubebuilder:printcolumn:name="LastCheck",type="date",JSONPath=`.status.lastCheck`
+// +kubebuilder:printcolumn:name="LastCheck",type="string",JSONPath=`.status.lastCheck`
 // +kubebuilder:printcolumn:name="Provider",type=string,JSONPath=`.spec.provider`
 // +kubebuilder:printcolumn:name="Region",type=string,JSONPath=`.spec.region`
 // +kubebuilder:resource:scope=Cluster
@@ -193,9 +193,6 @@ type WorkspaceSpec struct {
 	// workspace users
 	// +optional
 	Users []WorkspaceUser `json:"users" yaml:"users" protobuf:"bytes,3,rep,name=users"`
-	//cascade delete, if true when delete cluster will delete all resource belong this workspace, including namespace
-	// +optional
-	CascadeDelete bool `json:"cascadeDelete" yaml:"cascadeDelete" protobuf:"varint,4,opt,name=cascadeDelete"`
 }
 type WorkspaceUser struct {
 	// ref kubeuser

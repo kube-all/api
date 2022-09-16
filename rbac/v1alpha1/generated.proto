@@ -212,11 +212,16 @@ message WorkspaceRoleSpec {
   // +optional
   repeated k8s.io.api.rbac.v1.PolicyRule rules = 1;
 
+  // ref cluster roles, it must have label: kubeall.com/custom`
   // +optional
   repeated string clusterRoleRefs = 2;
 
   // Description  about workspace role
   // +kubebuilder:validation:Required
   optional string description = 3;
+
+  // only ref pod's namespace role,  it must have label: kubeall.com/custom
+  // +optional
+  repeated string roleRefs = 4;
 }
 

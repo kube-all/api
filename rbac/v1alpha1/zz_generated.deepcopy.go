@@ -406,6 +406,11 @@ func (in *WorkspaceRoleSpec) DeepCopyInto(out *WorkspaceRoleSpec) {
 		*out = make([]string, len(*in))
 		copy(*out, *in)
 	}
+	if in.RoleRefs != nil {
+		in, out := &in.RoleRefs, &out.RoleRefs
+		*out = make([]string, len(*in))
+		copy(*out, *in)
+	}
 	return
 }
 

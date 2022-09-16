@@ -317,10 +317,6 @@ message WorkspaceSpec {
   // workspace users
   // +optional
   repeated WorkspaceUser users = 3;
-
-  // cascade delete, if true when delete cluster will delete all resource belong this workspace, including namespace
-  // +optional
-  optional bool cascadeDelete = 4;
 }
 
 // WorkspaceStatus defines the observed state of Workspace

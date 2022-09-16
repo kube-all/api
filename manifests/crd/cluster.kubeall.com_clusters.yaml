@@ -39,7 +39,7 @@ spec:
       type: string
     - jsonPath: .status.lastCheck
       name: LastCheck
-      type: date
+      type: string
     - jsonPath: .spec.provider
       name: Provider
       type: string

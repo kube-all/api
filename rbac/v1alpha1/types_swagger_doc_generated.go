@@ -135,7 +135,9 @@ func (WorkspaceRoleList) SwaggerDoc() map[string]string {
 }
 
 var map_WorkspaceRoleSpec = map[string]string{
-	"description": "Description  about workspace role",
+	"clusterRoleRefs": "ref cluster roles, it must have label: kubeall.com/custom`",
+	"description":     "Description  about workspace role",
+	"roleRefs":        "only ref pod's namespace role,  it must have label: kubeall.com/custom",
 }
 
 func (WorkspaceRoleSpec) SwaggerDoc() map[string]string {
