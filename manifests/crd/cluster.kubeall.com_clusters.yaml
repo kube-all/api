@@ -65,10 +65,14 @@ spec:
             type: object
           spec:
             properties:
+              caData:
+                description: cluster Certificate Authority Data
+                type: string
               category:
                 description: 'cluster category, such as: Strict、NonStrict、Dev、Test、Pro'
                 type: string
-              certificateAuthorityData:
+              certData:
+                description: client certificate data
                 type: string
               code:
                 description: cluster code
@@ -76,7 +80,8 @@ spec:
               description:
                 description: cluster description
                 type: string
-              kubeConfig:
+              keyData:
+                description: client key
                 type: string
               master:
                 description: cluster master url
@@ -89,21 +94,27 @@ spec:
                 description: cluster region
                 type: string
               token:
+                description: cluster's user or serviceaccount token
                 type: string
             required:
+            - caData
             - category
             - code
-            - kubeConfig
             - master
             - provider
             type: object
           status:
             properties:
-              encryptedCertificateAuthorityData:
+              encryptedCaData:
+                description: encrypted cluster Certificate Authority Data
                 format: byte
                 type: string
-              encryptedKubeConfig:
-                description: cluster  kubeconfig
+              encryptedCertData:
+                description: encrypted client certificate data
+                format: byte
+                type: string
+              encryptedKeyData:
+                description: encrypted client key
                 format: byte
                 type: string
               encryptedToken:

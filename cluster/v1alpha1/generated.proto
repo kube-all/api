@@ -137,13 +137,21 @@ message ClusterSpec {
   // +kubebuilder:validation:Required
   optional string master = 6;
 
-  optional string kubeConfig = 7;
-
+  // cluster's user or serviceaccount token
   // +optional
   optional string token = 8;
 
+  // client certificate data
   // +optional
-  optional string certificateAuthorityData = 9;
+  optional string certData = 9;
+
+  // client key
+  // +optional
+  optional string keyData = 10;
+
+  // cluster Certificate Authority Data
+  // +kubebuilder:validation:Required
+  optional string caData = 11;
 }
 
 message ClusterStatus {
@@ -171,12 +179,17 @@ message ClusterStatus {
   // +optional
   repeated string namespaces = 9;
 
-  // cluster  kubeconfig
+  // encrypted client certificate data
   // +optional
-  optional bytes encryptedKubeConfig = 15;
+  optional bytes encryptedCertData = 15;
 
+  // encrypted client key
   // +optional
-  optional bytes encryptedCertificateAuthorityData = 16;
+  optional bytes encryptedKeyData = 16;
+
+  // encrypted cluster Certificate Authority Data
+  // +optional
+  optional bytes encryptedCaData = 17;
 }
 
 // DeployTemplate  specify workspace resource and namespace number,

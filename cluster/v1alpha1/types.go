@@ -68,12 +68,19 @@ type ClusterSpec struct {
 	Description string `json:"description" yaml:"description" protobuf:"bytes,5,opt,name=description"`
 	// cluster master url
 	// +kubebuilder:validation:Required
-	Master     string `json:"master" yaml:"master" protobuf:"bytes,6,opt,name=master"`
-	KubeConfig string `json:"kubeConfig" yaml:"kubeConfig" protobuf:"bytes,7,opt,name=kubeConfig"`
+	Master string `json:"master" yaml:"master" protobuf:"bytes,6,opt,name=master"`
+	// cluster's user or serviceaccount token
 	// +optional
 	Token string `json:"token" yaml:"token" protobuf:"bytes,8,opt,name=token"`
+	// client certificate data
 	// +optional
-	CertificateAuthorityData string `json:"certificateAuthorityData" yaml:"certificateAuthorityData" protobuf:"bytes,9,opt,name=certificateAuthorityData"`
+	CertData string `json:"certData" yaml:"certData" protobuf:"bytes,9,opt,name=certData"`
+	// client key
+	// +optional
+	KeyData string `json:"keyData" yaml:"keyData" protobuf:"bytes,10,opt,name=keyData"`
+	// cluster Certificate Authority Data
+	// +kubebuilder:validation:Required
+	CaData string `json:"caData" yaml:"caData" protobuf:"bytes,11,opt,name=caData"`
 }
 type ClusterStatus struct {
 	// manager cluster, will auto judge
@@ -93,11 +100,15 @@ type ClusterStatus struct {
 	Hash string `json:"hash" yaml:"hash" protobuf:"bytes,8,opt,name=hash"`
 	// +optional
 	Namespaces []string `json:"namespaces" yaml:"namespaces" protobuf:"bytes,9,rep,name=namespaces"`
-	// cluster  kubeconfig
+	// encrypted client certificate data
 	// +optional
-	EncryptedKubeConfig []byte `json:"encryptedKubeConfig" yaml:"encryptedKubeConfig" protobuf:"bytes,15,opt,name=encryptedKubeConfig"`
+	EncryptedCertData []byte `json:"encryptedCertData" yaml:"encryptedCertData" protobuf:"bytes,15,opt,name=encryptedCertData"`
+	// encrypted client key
 	// +optional
-	EncryptedCertificateAuthorityData []byte `json:"encryptedCertificateAuthorityData" yaml:"encryptedCertificateAuthorityData" protobuf:"bytes,16,opt,name=encryptedCertificateAuthorityData"`
+	EncryptedKeyData []byte `json:"encryptedKeyData" yaml:"encryptedKeyData" protobuf:"bytes,16,opt,name=encryptedKeyData"`
+	// encrypted cluster Certificate Authority Data
+	// +optional
+	EncryptedCaData []byte `json:"encryptedCaData" yaml:"encryptedCaData" protobuf:"bytes,17,opt,name=encryptedCaData"`
 }
 
 type Version struct {

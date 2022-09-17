@@ -66,6 +66,10 @@ var map_ClusterSpec = map[string]string{
 	"region":      "cluster region",
 	"description": "\n cluster description",
 	"master":      "cluster master url",
+	"token":       "cluster's user or serviceaccount token",
+	"certData":    "client certificate data",
+	"keyData":     "client key",
+	"caData":      "cluster Certificate Authority Data",
 }
 
 func (ClusterSpec) SwaggerDoc() map[string]string {
@@ -73,10 +77,12 @@ func (ClusterSpec) SwaggerDoc() map[string]string {
 }
 
 var map_ClusterStatus = map[string]string{
-	"isManager":           "manager cluster, will auto judge",
-	"version":             "kubernetes version",
-	"encryptedToken":      "cluster sa token",
-	"encryptedKubeConfig": "cluster  kubeconfig",
+	"isManager":         "manager cluster, will auto judge",
+	"version":           "kubernetes version",
+	"encryptedToken":    "cluster sa token",
+	"encryptedCertData": "encrypted client certificate data",
+	"encryptedKeyData":  "encrypted client key",
+	"encryptedCaData":   "encrypted cluster Certificate Authority Data",
 }
 
 func (ClusterStatus) SwaggerDoc() map[string]string {

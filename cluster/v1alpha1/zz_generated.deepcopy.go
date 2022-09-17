@@ -334,13 +334,18 @@ func (in *ClusterStatus) DeepCopyInto(out *ClusterStatus) {
 		*out = make([]string, len(*in))
 		copy(*out, *in)
 	}
-	if in.EncryptedKubeConfig != nil {
-		in, out := &in.EncryptedKubeConfig, &out.EncryptedKubeConfig
+	if in.EncryptedCertData != nil {
+		in, out := &in.EncryptedCertData, &out.EncryptedCertData
 		*out = make([]byte, len(*in))
 		copy(*out, *in)
 	}
-	if in.EncryptedCertificateAuthorityData != nil {
-		in, out := &in.EncryptedCertificateAuthorityData, &out.EncryptedCertificateAuthorityData
+	if in.EncryptedKeyData != nil {
+		in, out := &in.EncryptedKeyData, &out.EncryptedKeyData
+		*out = make([]byte, len(*in))
+		copy(*out, *in)
+	}
+	if in.EncryptedCaData != nil {
+		in, out := &in.EncryptedCaData, &out.EncryptedCaData
 		*out = make([]byte, len(*in))
 		copy(*out, *in)
 	}

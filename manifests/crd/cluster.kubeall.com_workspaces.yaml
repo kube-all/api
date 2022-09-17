@@ -42,10 +42,6 @@ spec:
             type: object
           spec:
             properties:
-              cascadeDelete:
-                description: cascade delete, if true when delete cluster will delete
-                  all resource belong this workspace, including namespace
-                type: boolean
               code:
                 description: workspace code
                 type: string
