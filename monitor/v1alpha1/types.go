@@ -260,7 +260,7 @@ type ClusterDashboardSpec struct {
 	// +kubebuilder:validation:Required
 	ClusterRef string `json:"clusterRef" yaml:"clusterRef" protobuf:"bytes,1,opt,name=clusterRef"`
 	// agent will get metrics from prometheus, item is builtin promql
-	Metrics []DashboardMetrics `json:"metrics" yaml:"metrics" protobuf:"bytes,2,rep,name=metrics"`
+	MetricsSpec []DashboardMetrics `protobuf:"bytes,2,rep,name=metricsSpec"`
 }
 type ClusterDashboardStatus struct {
 	// agent last report time
@@ -274,7 +274,7 @@ type ClusterDashboardStatus struct {
 	// +optional
 	NamespaceNumber int `json:"namespaceNumber" yaml:"namespaceNumber" protobuf:"varint,3,opt,name=namespaceNumber"`
 	// +optional
-	Metrics map[string][]DashboardMetricsValue `json:"metrics" yaml:"metrics" protobuf:"bytes,4,rep,name=metrics"`
+	Metrics []DashboardMetricsValue `json:"metrics" yaml:"metrics" protobuf:"bytes,4,rep,name=metrics"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

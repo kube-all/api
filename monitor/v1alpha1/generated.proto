@@ -51,7 +51,7 @@ message ClusterDashboardSpec {
   optional string clusterRef = 1;
 
   // agent will get metrics from prometheus, item is builtin promql
-  repeated DashboardMetrics metrics = 2;
+  repeated DashboardMetrics metricsSpec = 2;
 }
 
 message ClusterDashboardStatus {
@@ -69,7 +69,7 @@ message ClusterDashboardStatus {
   optional int64 namespaceNumber = 3;
 
   // +optional
-  map<string, DashboardMetricsValue> metrics = 4;
+  repeated DashboardMetricsValue metrics = 4;
 }
 
 message DashboardMetrics {
