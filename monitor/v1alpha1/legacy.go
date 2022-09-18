@@ -36,6 +36,8 @@ func addLegacyKnownTypes(scheme *runtime.Scheme) error {
 		&ClusterDashboardList{},
 		&WorkspaceDashboard{},
 		&WorkspaceDashboardList{},
+		&Workload{},
+		&WorkloadList{},
 	}
 	scheme.AddKnownTypes(legacyGroupVersion, types...)
 	return nil

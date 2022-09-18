@@ -13,13 +13,11 @@ API_GROUP_VERSIONS="\
 cluster/v1alpha1 \
 monitor/v1alpha1 \
 rbac/v1alpha1 \
-metrics/v1alpha1 \
 meter/v1alpha1 \
 "
 API_PACKAGES="\
 github.com/kube-all/api/cluster/v1alpha1,\
 github.com/kube-all/api/monitor/v1alpha1,\
 github.com/kube-all/api/rbac/v1alpha1,\
-github.com/kube-all/api/meter/v1alpha1,\
-github.com/kube-all/api/metrics/v1alpha1\
+github.com/kube-all/api/meter/v1alpha1\
 "

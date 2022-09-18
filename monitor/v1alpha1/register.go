@@ -53,6 +53,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ClusterDashboardList{},
 		&WorkspaceDashboard{},
 		&WorkspaceDashboardList{},
+		&Workload{},
+		&WorkloadList{},
 	)
 	metav1.AddToGroupVersion(scheme, GroupVersion)
 	return nil

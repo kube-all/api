@@ -18,7 +18,6 @@ package api
 
 import (
 	"github.com/kube-all/api/cluster"
-	"github.com/kube-all/api/metrics"
 	"github.com/kube-all/api/monitor"
 	"github.com/kube-all/api/rbac"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -28,7 +27,6 @@ var (
 	schemeBuilder = runtime.NewSchemeBuilder(
 		cluster.Install,
 		rbac.Install,
-		metrics.Install,
 		monitor.Install,
 	)
 	// Install is a function which adds every version of every openshift group to a scheme

@@ -22,6 +22,7 @@ syntax = "proto2";
 package github.com.kube_all.api.monitor.v1alpha1;
 
 import "k8s.io/api/core/v1/generated.proto";
+import "k8s.io/apimachinery/pkg/api/resource/generated.proto";
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 
@@ -346,6 +347,59 @@ message VectorMatrixLine {
   map<string, string> metric = 1;
 
   repeated MetricValue values = 2;
+}
+
+// Workload workload
+message Workload {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+
+  // +optional
+  optional WorkloadStatus status = 2;
+}
+
+// WorkloadList contains a list of Workload
+message WorkloadList {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+
+  repeated Workload items = 2;
+}
+
+message WorkloadStatus {
+  // pod top owner reference's resource kind, eg: Deployment,StatefulSet
+  // +optional
+  optional string workloadKind = 19;
+
+  // replica, DaemonSet's Replicas will equal number of nodes
+  // +optional
+  optional int32 replicas = 14;
+
+  // Total number of non-terminated pods targeted
+  // +optional
+  optional int32 updatedReplicas = 15;
+
+  // Total number of ready pods targeted
+  // +optional
+  optional int32 readyReplicas = 16;
+
+  // Total number of unavailable pods targeted.
+  // +optional
+  optional int32 unavailableReplicas = 17;
+
+  // one pod's request and limit
+  // +optional
+  optional k8s.io.api.core.v1.ResourceRequirements resources = 18;
+
+  // The following fields define time interval from which metrics were
+  // collected from the interval [Timestamp-Window, Timestamp].
+  // +optional
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.Time timestamp = 8;
+
+  // +optional
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.Duration window = 9;
+
+  // The memory usage is the memory working set.
+  // +optional
+  map<string, k8s.io.apimachinery.pkg.api.resource.Quantity> usage = 10;
 }
 
 // WorkspaceDashboard  Workspace information

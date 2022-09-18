@@ -5,9 +5,9 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: (devel)
   creationTimestamp: null
-  name: workloads.metrics.kubeall.com
+  name: workloads.monitor.kubeall.com
 spec:
-  group: metrics.kubeall.com
+  group: monitor.kubeall.com
   names:
     kind: Workload
     listKind: WorkloadList

@@ -198,6 +198,37 @@ func (ServiceRelation) SwaggerDoc() map[string]string {
 	return map_ServiceRelation
 }
 
+var map_Workload = map[string]string{
+	"": "Workload workload",
+}
+
+func (Workload) SwaggerDoc() map[string]string {
+	return map_Workload
+}
+
+var map_WorkloadList = map[string]string{
+	"": "WorkloadList contains a list of Workload",
+}
+
+func (WorkloadList) SwaggerDoc() map[string]string {
+	return map_WorkloadList
+}
+
+var map_WorkloadStatus = map[string]string{
+	"workloadKind":        "pod top owner reference's resource kind, eg: Deployment,StatefulSet",
+	"replicas":            "replica, DaemonSet's Replicas will equal number of nodes",
+	"updatedReplicas":     "Total number of non-terminated pods targeted",
+	"readyReplicas":       "Total number of ready pods targeted",
+	"unavailableReplicas": "Total number of unavailable pods targeted.",
+	"resources":           "one pod's request and limit",
+	"timestamp":           "The following fields define time interval from which metrics were collected from the interval [Timestamp-Window, Timestamp].",
+	"usage":               "The memory usage is the memory working set.",
+}
+
+func (WorkloadStatus) SwaggerDoc() map[string]string {
+	return map_WorkloadStatus
+}
+
 var map_WorkspaceDashboard = map[string]string{
 	"": "WorkspaceDashboard  Workspace information",
 }
