@@ -269,12 +269,16 @@ type ClusterDashboardStatus struct {
 	// cluster's nodes information, agent will report this information
 	// key is node role
 	// +optional
-	Nodes map[string]int `json:"nodes" yaml:"nodes" protobuf:"bytes,2,rep,name=nodes"`
+	Nodes NodeInfo `json:"nodes" yaml:"nodes" protobuf:"bytes,2,rep,name=nodes"`
 	// cluster's namespace number, agent will report this information
 	// +optional
-	NamespaceNumber int `json:"namespaceNumber" yaml:"namespaceNumber" protobuf:"varint,3,opt,name=namespaceNumber"`
+	NamespaceNumber *int32 `json:"namespaceNumber" yaml:"namespaceNumber" protobuf:"varint,3,opt,name=namespaceNumber"`
 	// +optional
 	Metrics []DashboardMetricsValue `json:"metrics" yaml:"metrics" protobuf:"bytes,4,rep,name=metrics"`
+}
+type NodeInfo struct {
+	Role   string `json:"role" yaml:"role" protobuf:"bytes,1,opt,name=role"`
+	Number int    `json:"number" yaml:"number" protobuf:"varint,2,opt,name=number"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -304,7 +308,7 @@ type WorkspaceDashboard struct {
 }
 type WorkspaceDashboardSpec struct {
 	// agent will get metrics from prometheus, item is builtin promql
-	Metrics []DashboardMetrics `json:"metrics" yaml:"metrics" protobuf:"bytes,2,rep,name=metrics"`
+	MetricsSpec []DashboardMetrics `json:"metrics" yaml:"metrics" protobuf:"bytes,2,rep,name=metrics"`
 }
 type WorkspaceDashboardStatus struct {
 	// agent last report time
@@ -314,7 +318,7 @@ type WorkspaceDashboardStatus struct {
 	// +optional
 	NamespaceNumber int `json:"namespaceNumber" yaml:"namespaceNumber" protobuf:"varint,2,opt,name=namespaceNumber"`
 	// +optional
-	Metrics map[string][]DashboardMetricsValue `json:"metrics" yaml:"metrics" protobuf:"bytes,3,rep,name=metrics"`
+	Metrics []DashboardMetricsValue `json:"metrics" yaml:"metrics" protobuf:"bytes,3,rep,name=metrics"`
 	// meters
 	Meters []Meter `json:"meters" yaml:"meters" protobuf:"bytes,4,rep,name=meters"`
 }
