@@ -62,7 +62,7 @@ message ClusterDashboardStatus {
   // cluster's nodes information, agent will report this information
   // key is node role
   // +optional
-  optional NodeInfo nodes = 2;
+  repeated NodeInfo nodes = 2;
 
   // cluster's namespace number, agent will report this information
   // +optional
@@ -109,7 +109,7 @@ message MetricValue {
 message NodeInfo {
   optional string role = 1;
 
-  optional int64 number = 2;
+  optional int32 number = 2;
 }
 
 // ProjectArchitecture is the Schema for the projectarchitectures API
@@ -436,7 +436,7 @@ message WorkspaceDashboardStatus {
 
   // workspace namespace number, agent will report this information
   // +optional
-  optional int64 namespaceNumber = 2;
+  optional int32 namespaceNumber = 2;
 
   // +optional
   repeated DashboardMetricsValue metrics = 3;

@@ -45,7 +45,7 @@ func (ClusterDashboardList) SwaggerDoc() map[string]string {
 
 var map_ClusterDashboardSpec = map[string]string{
 	"clusterRef":  "cluster related",
-	"MetricsSpec": "agent will get metrics from prometheus, item is builtin promql",
+	"metricsSpec": "agent will get metrics from prometheus, item is builtin promql",
 }
 
 func (ClusterDashboardSpec) SwaggerDoc() map[string]string {

@@ -87,25 +87,23 @@ spec:
                   type: object
                 type: array
               metrics:
-                additionalProperties:
-                  items:
-                    properties:
-                      name:
-                        type: string
-                      type:
-                        type: string
-                      unit:
-                        type: string
-                      value:
-                        type: string
-                    required:
-                    - name
-                    - type
-                    - unit
-                    - value
-                    type: object
-                  type: array
-                type: object
+                items:
+                  properties:
+                    name:
+                      type: string
+                    type:
+                      type: string
+                    unit:
+                      type: string
+                    value:
+                      type: string
+                  required:
+                  - name
+                  - type
+                  - unit
+                  - value
+                  type: object
+                type: array
               namespaceNumber:
                 description: workspace namespace number, agent will report this information
                 type: integer

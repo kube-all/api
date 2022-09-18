@@ -44,29 +44,8 @@ spec:
               clusterRef:
                 description: cluster related
                 type: string
-              metrics:
-                description: agent will get metrics from prometheus, item is builtin
-                  promql
-                items:
-                  properties:
-                    name:
-                      type: string
-                    promql:
-                      type: string
-                    valueType:
-                      type: string
-                    valueUnit:
-                      type: string
-                  required:
-                  - name
-                  - promql
-                  - valueType
-                  - valueUnit
-                  type: object
-                type: array
             required:
             - clusterRef
-            - metrics
             type: object
           status:
             properties:
@@ -75,34 +54,42 @@ spec:
                 format: date-time
                 type: string
               metrics:
-                additionalProperties:
-                  items:
-                    properties:
-                      name:
-                        type: string
-                      type:
-                        type: string
-                      unit:
-                        type: string
-                      value:
-                        type: string
-                    required:
-                    - name
-                    - type
-                    - unit
-                    - value
-                    type: object
-                  type: array
-                type: object
+                items:
+                  properties:
+                    name:
+                      type: string
+                    type:
+                      type: string
+                    unit:
+                      type: string
+                    value:
+                      type: string
+                  required:
+                  - name
+                  - type
+                  - unit
+                  - value
+                  type: object
+                type: array
               namespaceNumber:
                 description: cluster's namespace number, agent will report this information
+                format: int32
                 type: integer
               nodes:
-                additionalProperties:
-                  type: integer
                 description: cluster's nodes information, agent will report this information
                   key is node role
-                type: object
+                items:
+                  properties:
+                    number:
+                      format: int32
+                      type: integer
+                    role:
+                      type: string
+                  required:
+                  - number
+                  - role
+                  type: object
+                type: array
             type: object
         type: object
     served: true

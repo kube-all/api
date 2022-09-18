@@ -260,7 +260,7 @@ type ClusterDashboardSpec struct {
 	// +kubebuilder:validation:Required
 	ClusterRef string `json:"clusterRef" yaml:"clusterRef" protobuf:"bytes,1,opt,name=clusterRef"`
 	// agent will get metrics from prometheus, item is builtin promql
-	MetricsSpec []DashboardMetrics `protobuf:"bytes,2,rep,name=metricsSpec"`
+	MetricsSpec []DashboardMetrics `json:"metricsSpec" yaml:"metricsSpec" protobuf:"bytes,2,rep,name=metricsSpec"`
 }
 type ClusterDashboardStatus struct {
 	// agent last report time
@@ -269,7 +269,7 @@ type ClusterDashboardStatus struct {
 	// cluster's nodes information, agent will report this information
 	// key is node role
 	// +optional
-	Nodes NodeInfo `json:"nodes" yaml:"nodes" protobuf:"bytes,2,rep,name=nodes"`
+	Nodes []NodeInfo `json:"nodes" yaml:"nodes" protobuf:"bytes,2,rep,name=nodes"`
 	// cluster's namespace number, agent will report this information
 	// +optional
 	NamespaceNumber *int32 `json:"namespaceNumber" yaml:"namespaceNumber" protobuf:"varint,3,opt,name=namespaceNumber"`
@@ -278,7 +278,7 @@ type ClusterDashboardStatus struct {
 }
 type NodeInfo struct {
 	Role   string `json:"role" yaml:"role" protobuf:"bytes,1,opt,name=role"`
-	Number int    `json:"number" yaml:"number" protobuf:"varint,2,opt,name=number"`
+	Number *int32 `json:"number" yaml:"number" protobuf:"varint,2,opt,name=number"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -316,7 +316,7 @@ type WorkspaceDashboardStatus struct {
 	LastReportTime *metav1.Time `json:"lastReportTime" yaml:"lastReportTime" protobuf:"bytes,1,opt,name=lastReportTime"`
 	// workspace namespace number, agent will report this information
 	// +optional
-	NamespaceNumber int `json:"namespaceNumber" yaml:"namespaceNumber" protobuf:"varint,2,opt,name=namespaceNumber"`
+	NamespaceNumber *int32 `json:"namespaceNumber" yaml:"namespaceNumber" protobuf:"varint,2,opt,name=namespaceNumber"`
 	// +optional
 	Metrics []DashboardMetricsValue `json:"metrics" yaml:"metrics" protobuf:"bytes,3,rep,name=metrics"`
 	// meters
