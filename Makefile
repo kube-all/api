@@ -25,6 +25,6 @@ generate:
 CONTROLLER_GEN = $(GOPATH)/bin/controller-gen
 
 .PHONY: manifests
-manifests:
+manifests: generate
 	controller-gen rbac:roleName=manager-role crd webhook paths="./..." output:crd:artifacts:config=manifests/crd
 
