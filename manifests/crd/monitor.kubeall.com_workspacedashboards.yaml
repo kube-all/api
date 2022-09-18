@@ -61,12 +61,8 @@ spec:
                   - valueUnit
                   type: object
                 type: array
-              workspaceRef:
-                description: workspace related
-                type: string
             required:
             - metrics
-            - workspaceRef
             type: object
           status:
             properties:
@@ -74,6 +70,22 @@ spec:
                 description: agent last report time
                 format: date-time
                 type: string
+              meters:
+                description: meters
+                items:
+                  properties:
+                    category:
+                      type: string
+                    name:
+                      type: string
+                    namespace:
+                      type: string
+                  required:
+                  - category
+                  - name
+                  - namespace
+                  type: object
+                type: array
               metrics:
                 additionalProperties:
                   items:
@@ -97,6 +109,8 @@ spec:
               namespaceNumber:
                 description: workspace namespace number, agent will report this information
                 type: integer
+            required:
+            - meters
             type: object
         type: object
     served: true

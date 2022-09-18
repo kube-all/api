@@ -91,6 +91,14 @@ message DashboardMetricsValue {
   optional string unit = 4;
 }
 
+message Meter {
+  optional string name = 1;
+
+  optional string category = 2;
+
+  optional string namespace = 3;
+}
+
 message MetricValue {
   optional int64 timestamp = 1;
 
@@ -357,10 +365,6 @@ message WorkspaceDashboardList {
 }
 
 message WorkspaceDashboardSpec {
-  // workspace related
-  // +kubebuilder:validation:Required
-  optional string workspaceRef = 1;
-
   // agent will get metrics from prometheus, item is builtin promql
   repeated DashboardMetrics metrics = 2;
 }
@@ -376,5 +380,8 @@ message WorkspaceDashboardStatus {
 
   // +optional
   map<string, DashboardMetricsValue> metrics = 3;
+
+  // meters
+  repeated Meter meters = 4;
 }
 

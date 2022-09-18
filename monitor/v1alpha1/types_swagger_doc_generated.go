@@ -215,8 +215,7 @@ func (WorkspaceDashboardList) SwaggerDoc() map[string]string {
 }
 
 var map_WorkspaceDashboardSpec = map[string]string{
-	"workspaceRef": "workspace related",
-	"metrics":      "agent will get metrics from prometheus, item is builtin promql",
+	"metrics": "agent will get metrics from prometheus, item is builtin promql",
 }
 
 func (WorkspaceDashboardSpec) SwaggerDoc() map[string]string {
@@ -226,6 +225,7 @@ func (WorkspaceDashboardSpec) SwaggerDoc() map[string]string {
 var map_WorkspaceDashboardStatus = map[string]string{
 	"lastReportTime":  "agent last report time",
 	"namespaceNumber": "workspace namespace number, agent will report this information",
+	"meters":          "meters",
 }
 
 func (WorkspaceDashboardStatus) SwaggerDoc() map[string]string {

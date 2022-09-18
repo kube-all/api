@@ -303,9 +303,6 @@ type WorkspaceDashboard struct {
 	Status WorkspaceDashboardStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 type WorkspaceDashboardSpec struct {
-	// workspace related
-	// +kubebuilder:validation:Required
-	WorkspaceRef string `json:"workspaceRef" yaml:"workspaceRef" protobuf:"bytes,1,opt,name=workspaceRef"`
 	// agent will get metrics from prometheus, item is builtin promql
 	Metrics []DashboardMetrics `json:"metrics" yaml:"metrics" protobuf:"bytes,2,rep,name=metrics"`
 }
@@ -318,6 +315,13 @@ type WorkspaceDashboardStatus struct {
 	NamespaceNumber int `json:"namespaceNumber" yaml:"namespaceNumber" protobuf:"varint,2,opt,name=namespaceNumber"`
 	// +optional
 	Metrics map[string][]DashboardMetricsValue `json:"metrics" yaml:"metrics" protobuf:"bytes,3,rep,name=metrics"`
+	// meters
+	Meters []Meter `json:"meters" yaml:"meters" protobuf:"bytes,4,rep,name=meters"`
+}
+type Meter struct {
+	Name      string `json:"name" yaml:"name" protobuf:"bytes,1,opt,name=name"`
+	Category  string `json:"category" yaml:"category" protobuf:"bytes,2,opt,name=category"`
+	Namespace string `json:"namespace" yaml:"namespace" protobuf:"bytes,3,opt,name=namespace"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
